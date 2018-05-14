@@ -1,0 +1,26 @@
+.coin-symbol {
+    font-weight: bold;
+    color: red;
+}
+
+.coin-data-item {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.coin-data-row-1 {
+    margin-bottom: 20px;
+}
+
+.coin-data-row-2 {
+    margin-bottom: 10px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
+}
