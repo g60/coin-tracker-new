@@ -12,10 +12,13 @@ class CoinList extends Component {
 
         this.state = {
             coinData: [],
+            coinDataLoaded: false,
+            transactionsLoaded: false,
         };
         
     }
 
+    /*
     getTransactions(){
         fetch('/api/transactions')
         .then(res => res.json())
@@ -89,6 +92,7 @@ class CoinList extends Component {
             //console.log("coindata: ", coinData);
         });
     };
+    */
 
     componentDidMount() {
         
@@ -147,18 +151,20 @@ class CoinList extends Component {
         },
         */
 
-       
+       this.setState({  transactionsLoaded: false,
+                        coinDataLoaded: false,
+                        allTransactions: [],
+                        coinData: []
+                    });
+
        fetch('/api/transactions')
        .then(res => res.json())
        .then(allTransactions => this.setState({ allTransactions }))
        .then(() => {
          console.log(`fetched ${this.state.allTransactions.length} transactions`);
-        });
-        
-        //this.getTransactions();
-
-        
-        fetch('https://api.coinmarketcap.com/v2/ticker/?convert=GBP&limit=100')
+        }).then(() => {
+            this.setState({ transactionsLoaded: true });
+        }).then (results => fetch('https://api.coinmarketcap.com/v2/ticker/?convert=GBP&limit=100'))
         .then(results => {
             //console.log("results: " + results.json())
             return results.json();
@@ -180,7 +186,7 @@ class CoinList extends Component {
                     val.symbol === "LTC" ||
                     val.symbol === "XRP" )
                     {
-                        let thisCoinTransactions = this.props.allTransactions.filter(function (ct) {
+                        let thisCoinTransactions = this.state.allTransactions.filter(function (ct) {
                             return (ct.symbol === val.symbol);
                         });
 
@@ -217,11 +223,16 @@ class CoinList extends Component {
                            //coinTransactions: coinTransactions
                         });
             //console.log("coindata: ", coinData);
+        }).then(() => {
+            this.setState({ coinDataLoaded: true });
+        }).then(() => {
+            console.log("coinData: " + this.state.coinData);
+            console.log("transactions: " + this.state.allTransactions);
         });
         
        //this.getCoinData();
 
-
+        
 
        
     }
@@ -230,9 +241,14 @@ class CoinList extends Component {
         return (
             <div>
                 <div>
+                    {
+                        this.state.coinDataLoaded && this.state.transactionsLoaded ?
+                        this.state.coinData : null
+                    }
+                </div>
+                <div>
                     {this.state.coinData}
                 </div>
-
                 
             </div>
         );

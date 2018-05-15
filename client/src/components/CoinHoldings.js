@@ -32,7 +32,7 @@ class CoinHoldings extends Component {
             return new Date(a.dateBought) - new Date(b.dateBought);
         });
 
-        console.log("results: " + thisCoinTransactions.length);
+        //console.log("results: " + thisCoinTransactions.length);
 
         if (thisCoinTransactions.length === 0) {
 
@@ -64,16 +64,17 @@ class CoinHoldings extends Component {
 
                 profitOrLoss = profitOrLoss - (amountBought * priceBoughtAt) + (amountSold * priceSoldAt)
 
-                console.log("previousHolding: " + previousHolding);
-                console.log("amount bought: " + amountBought);
-                console.log("price bought at: " + priceBoughtAt);
-                console.log("amount sold: " + amountSold);
-                console.log("price sold at: " + priceSoldAt);
-                console.log("holdingRunningTotal: " + holdingRunningTotal);
-                console.log("realised profit / loss: " + profitOrLoss);
-                console.log("current value: " + (holdingRunningTotal * self.state.currentPrice)); 
+                //console.log("previousHolding: " + previousHolding);
+                //console.log("amount bought: " + amountBought);
+                //console.log("price bought at: " + priceBoughtAt);
+                //console.log("amount sold: " + amountSold);
+                //console.log("price sold at: " + priceSoldAt);
+                //console.log("holdingRunningTotal: " + holdingRunningTotal);
+                //console.log("realised profit / loss: " + profitOrLoss);
+                //console.log("current value: " + (holdingRunningTotal * self.state.currentPrice)); 
 
-                output.push(<CoinHolding    symbol={this.props.symbol}
+                output.push(<CoinHolding    key={i}
+                                            symbol={this.props.symbol}
                                             date={date}
                                             previousHolding={previousHolding}
                                             amountBought={amountBought}

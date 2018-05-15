@@ -32,7 +32,7 @@ class CoinTransactions extends Component {
             return new Date(a.dateBought) - new Date(b.dateBought);
         });
 
-        console.log("results: " + thisCoinTransactions.length);
+        //console.log("results: " + thisCoinTransactions.length);
 
         if (thisCoinTransactions.length === 0) {
 
