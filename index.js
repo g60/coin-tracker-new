@@ -15,7 +15,9 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 //const url = process.env.MONGODB_URI;
 //const url = myConfig.MONGODB_URI;
-const url = process.env.MONGODB_URI || config.mongodb_url;
+//const url = process.env.MONGODB_URI || config.mongodb_url;
+
+const url = config.mongodb_url;
 
 console.log("mongo url: " + url);
 
