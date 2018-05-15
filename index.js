@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 //const url = myConfig.MONGODB_URI;
 //const url = process.env.MONGODB_URI || config.mongodb_url;
 
-const url = config.mongodb_url;
+const url = "mongodb://heroku_2wk9ltj1:5jtcqmflvilqgjab10f1psrvtv@ds117960.mlab.com:17960/heroku_2wk9ltj1";
 
 console.log("mongo url: " + url);
 
