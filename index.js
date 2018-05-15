@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 //const generatePassword = require('password-generator');
-var config = require('./config');
+//var config = require('./config');
 var Transaction = require('./models/TransactionModel');
 
 const app = express();
